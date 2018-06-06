@@ -39,7 +39,7 @@ module.exports = (str,{length, keepSeparators, strict}) ->
         pos++
         order[i] = pos
         orderedCount++
-        if i < chars.length+2 # search for trigraphs/triblends
+        if i < chars.length-2 # search for trigraphs/triblends
           for tri in trigraphs.concat(triblends)
             if tri[0] == chars[i].toLowerCase() and
                 tri[1] == chars[i+1].toLowerCase() and
@@ -58,7 +58,7 @@ module.exports = (str,{length, keepSeparators, strict}) ->
           words.push word
           i++
           i++
-        else if i < chars.length+1 # search for digraphs/diblends
+        else if i < chars.length-1 # search for digraphs/diblends
           for di in digraphs.concat(diblends)
             if di[0] == chars[i].toLowerCase() and
                 di[1] == chars[i+1].toLowerCase()
